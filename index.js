@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/translate/", (req, res) => {
-  console.log("body", req.body);
+  // console.log("body", req.body);
   let body = req.body || {};
   baiduTranslate(body, res);
 });
