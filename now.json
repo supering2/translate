@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "translate",
+  "builds": [{
+      "src": "www/**/*",
+      "use": "@now/static"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [{
+    "src": "/",
+    "dest": "template/index.html"
+  }]
+}
