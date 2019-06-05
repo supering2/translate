@@ -16,7 +16,7 @@ const sendHtml = (path, response) => {
     encoding: "utf-8"
   };
   path = "template/" + path;
-  fs.readFile(path, options, function(err, data) {
+  fs.readFile(path, options, function (err, data) {
     console.log(`读取的html文件 ${path} 内容是`, data);
     response.send(data);
   });
@@ -24,7 +24,11 @@ const sendHtml = (path, response) => {
 
 const baiduTranslate = (data, res) => {
   // http://api.fanyi.baidu.com/api/trans/product/apidoc
-  let { q, from, to } = data;
+  let {
+    q,
+    from,
+    to
+  } = data;
   // 百度翻译api的要求， 中文需要encode
   // q = urlencode(q);
   console.log("ques", q);
@@ -36,7 +40,6 @@ const baiduTranslate = (data, res) => {
   // appid + q + salt + 密钥
   let sign = md5(appid + q + salt + key);
   let code = urlencode(q);
-  // 比较笨的写法， 可以考虑把这里改成函数
   let url = `${baseUrl}?q=${code}&from=${from}&to=${to}&appid=${appid}&salt=${salt}&sign=${sign}`;
   request(url, (error, response, body) => {
     console.log("body", body);
